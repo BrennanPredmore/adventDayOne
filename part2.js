@@ -18,15 +18,16 @@ const { first, visits } = data.reduce((state, action) => {
 
     if (info === null) {
         throw new Error(`Action did not match regexp: ${action}`);
-    }
+    } // incase you dont have any data to collect!
 
-    const turn = info[1];
-    const moves = Number(info[2]);
+    // BREAK DOWN DATA IN ARRAY ex.[L, 4]
+    const turn = info[1]; // RIGHT OR LEFT
+    const moves = Number(info[2]); // HOW MANY MOVES YOU MAKE
 
-    const direction = (4 + state.direction + (turn === 'L' ? -1 : 1)) % 4; 
+    const direction = (4 + state.direction + (turn === 'L' ? -1 : 1)) % 4; // if LEFT -1, else +1   divide the function by 4 then assign remainder to the direction
 
-    const dHorizontal = (direction === DIRECTIONS.EAST ? 1 : (direction === DIRECTIONS.WEST ? -1 : 0));
-    const dVertical = (direction === DIRECTIONS.NORTH ? 1 : (direction === DIRECTIONS.SOUTH ? -1 : 0));
+    const dHorizontal = (direction === DIRECTIONS.EAST ? 1 : (direction === DIRECTIONS.WEST ? -1 : 0)); // same as part one besides mulipling moves
+    const dVertical = (direction === DIRECTIONS.NORTH ? 1 : (direction === DIRECTIONS.SOUTH ? -1 : 0)); // same as part one besides mulipling moves
 
     let visits = state.visits;
     let first = state.first;
@@ -37,15 +38,15 @@ const { first, visits } = data.reduce((state, action) => {
         horizontal += dHorizontal;
         vertical += dVertical; 
 
-        const visit = `${vertical}/${horizontal}`;
-        first = visits.indexOf(visit) > -1 && first === null ? visit : first;
+        const visit = `${vertical}, ${horizontal}`;
+        first = visits.indexOf(visit) > -1 && first === null ? visit : first; // specific index of the visit
 
-        visits.push(visit); 
+        visits.push(visit); // push on to the end of visit array
     }
          
     return Object.assign(state, { horizontal, vertical, direction, visits, first });
-}, { horizontal: 0, vertical: 0, direction: DIRECTIONS.NORTH, visits: [`0/0`], first: null });
+}, { horizontal: 0, vertical: 0, direction: DIRECTIONS.NORTH, visits: [`0, 0`], first: null });
 
-const distance = first.split('/').map(Number).reduce((total, value) => total + value, 0);
+const distance = first.split(', ').map(Number).reduce((total, value) => total + value, 0);
 
-console.log(Math.abs(distance));
+console.log(Math.abs(distance)); // Math.abs() for no negative numbers!

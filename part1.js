@@ -13,7 +13,7 @@ const DIRECTIONS = {
   WEST: 3,
 };
 
-const { horizontal, vertical } = data.reduce(
+const { horizontal, vertical } = data.reduce( //reduce adds up all the instances
   (state, action) => {
     const info = action.match(actionRegex);
 
