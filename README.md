@@ -24,3 +24,10 @@ Then, you notice the instructions continue on the back of the Recruiting Documen
 For example, if your instructions are R8, R4, R4, R8, the first location you visit twice is 4 blocks away, due East.
 
 How many blocks away is the first location you visit twice?
+
+## answers:
+Part 1 = 161
+Part 2 = 110
+
+## instruction to Run Code:
+In your terminal type "node part1" or "node part2" for either corresponding answer.
