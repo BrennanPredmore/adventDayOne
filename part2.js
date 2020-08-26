@@ -13,7 +13,7 @@ const DIRECTIONS = {
   WEST: 3,
 };
 
-const { first, visits } = data.reduce(
+const { first, visits } = data.reduce( //takes the sum of all and puts out a single nominator
   (state, action) => {
     const info = action.match(actionRegex);
 
