@@ -46,5 +46,5 @@ const { horizontal, vertical } = data.reduce( //reduce adds up all the instances
   },
   { horizontal: 0, vertical: 0, direction: DIRECTIONS.NORTH }
 );
-
+//added comment
 console.log(Math.abs(horizontal) + Math.abs(vertical)); // abs === absolute value (no negative numbers)
